@@ -1,0 +1,80 @@
+endpoints for payments analytics
+
+endpoint to Return monthly revenue for the specified number of months
+http://127.0.0.1:8000/api/payments/analytics/monthly-revenue/?months=6
+response:
+{
+    "data": [
+        {
+            "month": "2025-01",
+            "revenue": 0,
+            "payment_count": 0,
+            "avg_payment": 0
+        },
+        {
+            "month": "2025-02",
+            "revenue": 0,
+            "payment_count": 0,
+            "avg_payment": 0
+        },
+        {
+            "month": "2025-03",
+            "revenue": 0,
+            "payment_count": 0,
+            "avg_payment": 0
+        },
+        {
+            "month": "2025-04",
+            "revenue": 0,
+            "payment_count": 0,
+            "avg_payment": 0
+        },
+        {
+            "month": "2025-05",
+            "revenue": 0,
+            "payment_count": 0,
+            "avg_payment": 0
+        },
+        {
+            "month": "2025-06",
+            "revenue": 76,
+            "payment_count": 1,
+            "avg_payment": 76
+        }
+    ]
+}
+
+
+
+endpoint to return payment method distribution
+http://127.0.0.1:8000/api/payments/analytics/payment-methods
+
+Response:
+{
+    "data": [
+        {
+            "method": "cash",
+            "count": 1,
+            "total_amount": 76,
+            "percentage": 100
+        }
+    ]
+}
+
+
+endpoints for subscriptions analytics
+
+endpoint to return renewal statistics
+http://127.0.0.1:8000/api/subscriptions/analytics/renewal-rate/
+
+response:
+{
+    "data": {
+        "total_subscriptions": 0,
+        "active_subscriptions": 0,
+        "expired_subscriptions": 0,
+        "renewal_rate": 0,
+        "expiring_this_month": 0,
+        "expiring_next_month": 0
+    }
+}

@@ -1,0 +1,204 @@
+GET /api/expenses/ - List Expenses
+query parameters
+?person_name=John           # Filter by person
+?date=2025-06-28           # Filter by exact date
+?date_from=2025-01-01      # Filter from date
+?date_to=2025-12-31        # Filter to date
+?amount_min=100            # Minimum amount
+?amount_max=1000           # Maximum amount
+?search=groceries          # Search in name, person, details
+?ordering=-amount          # Order by amount desc
+?page=1                    # Pagination
+
+Response:
+{
+  "count": 25,
+  "next": "http://localhost:8000/api/expenses/?page=2",
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "expense_name": "Groceries",
+      "person_name": "John Doe",
+      "amount": "150.50",
+      "date": "2025-06-28",
+      "created_at": "2025-06-28T10:30:00Z",
+      "details": "Weekly grocery shopping"
+    }
+  ]
+}
+
+GET /api/expenses/{id}/ - Get Single Expense
+response:
+{
+  "id": 1,
+  "expense_name": "Groceries",
+  "person_name": "John Doe",
+  "amount": "150.50",
+  "date": "2025-06-28",
+  "details": "Weekly grocery shopping",
+  "created_at": "2025-06-28T10:30:00Z",
+  "updated_at": "2025-06-28T10:30:00Z"
+}
+
+POST /api/expenses/ - Create Expense
+Content-Type: application/json
+request body:
+{
+  "expense_name": "Office Supplies",
+  "person_name": "Jane Smith",
+  "amount": "75.25",
+  "date": "2025-06-28",
+  "details": "Printer paper and pens"
+}
+
+response:
+{
+  "id": 2,
+  "expense_name": "Office Supplies",
+  "person_name": "Jane Smith",
+  "amount": "75.25",
+  "date": "2025-06-28",
+  "details": "Printer paper and pens",
+  "created_at": "2025-06-28T11:00:00Z",
+  "updated_at": "2025-06-28T11:00:00Z"
+}
+
+PUT /api/expenses/1/
+Content-Type: application/json
+request body:
+{
+  "expense_name": "Updated Groceries",
+  "person_name": "John Doe",
+  "amount": "175.00",
+  "date": "2025-06-28",
+  "details": "Updated weekly grocery shopping"
+}
+
+PATCH /api/expenses/1/
+Content-Type: application/json
+request body:
+{
+  "amount": "200.00"
+}
+
+DELETE /api/expenses/1/
+Response (204 No Content): Empty body
+
+
+GET /api/expenses/recent/ - Get Recent Expenses
+[
+  {
+    "id": 10,
+    "expense_name": "Lunch",
+    "person_name": "John",
+    "amount": "25.00",
+    "date": "2025-06-28",
+    "created_at": "2025-06-28T12:00:00Z",
+    "details": "Team lunch"
+  }
+]
+
+GET /api/expenses/by_person/ - Group by Person
+Response:
+[
+  {
+    "person_name": "John Doe",
+    "total_amount": "1250.75",
+    "expense_count": 8
+  },
+  {
+    "person_name": "Jane Smith",
+    "total_amount": "850.25",
+    "expense_count": 5
+  }
+]
+
+GET /api/expenses/monthly_summary/ - Monthly Summary
+Response:
+[
+  {
+    "month": "2025-06-01T00:00:00Z",
+    "total_amount": "2500.00",
+    "expense_count": 15,
+    "average_amount": "166.67"
+  },
+  {
+    "month": "2025-05-01T00:00:00Z",
+    "total_amount": "1800.50",
+    "expense_count": 12,
+    "average_amount": "150.04"
+  }
+]
+
+
+GET /api/expenses/dashboard/ - Dashboard Data
+query parameters:
+?date_from=2025-01-01      # Optional date range
+?date_to=2025-06-28        # Optional date range
+response:
+{
+  "total_expenses": 45,
+  "total_amount": "15250.75",
+  "average_amount": "338.91",
+  "monthly_total": "2500.00",
+  "monthly_count": 15,
+  "recent_expenses": [
+    {
+      "id": 45,
+      "expense_name": "Coffee",
+      "person_name": "Alice",
+      "amount": "4.50",
+      "date": "2025-06-28",
+      "created_at": "2025-06-28T14:30:00Z",
+      "details": "Morning coffee"
+    }
+  ],
+  "top_spenders": [
+    {
+      "person_name": "John Doe",
+      "total_spent": "3500.00",
+      "expense_count": 12
+    }
+  ],
+  "monthly_trend": [
+    {
+      "month": "2025-01-01T00:00:00Z",
+      "total": "1200.00",
+      "count": 8
+    }
+  ]
+}
+
+GET /api/expenses/statistics/ - Detailed Statistics
+response:
+{
+  "summary": {
+    "total_expenses": 45,
+    "total_amount": "15250.75",
+    "average_amount": "338.91",
+    "min_amount": "5.00",
+    "max_amount": "1500.00"
+  },
+  "daily_breakdown": [
+    {
+      "day": "2025-06-28",
+      "daily_total": "450.00",
+      "daily_count": 3
+    }
+  ],
+  "person_breakdown": [
+    {
+      "person_name": "John Doe",
+      "person_total": "3500.00",
+      "person_count": 12,
+      "person_average": "291.67"
+    }
+  ],
+  "date_range": {
+    "from": "2025-01-01",
+    "to": "2025-06-28"
+  }
+}
+
+

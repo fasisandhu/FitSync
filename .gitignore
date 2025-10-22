@@ -1,0 +1,104 @@
+# --- OS / system files ---
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- Python / Django ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Django
+# Keep migrations tracked (do NOT ignore them)
+local_settings.py
+*.log
+
+# SQLite database
+# Adjust if you use a different name/location
+backend/**/db.sqlite3
+**/db.sqlite3
+
+# Media and collected static
+media/
+staticfiles/
+static_root/
+
+# Python tooling caches
+.mypy_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+dist/*.whl
+
+# --- Node / React / Vite ---
+node_modules/
+# Vite / build outputs
+.dist/
+dist/
+build/
+.vite/
+.vite/deps/
+.parcel-cache/
+.cache/
+.eslintcache
+
+# Testing / coverage
+coverage/
+*.lcov
+
+# Package managers (keep lockfiles committed)
+.npm/
+.pnpm-store/
+.yarn/*
+!.yarn/releases/
+!.yarn/plugins/
+!.yarn/sdks/
+!.yarn/versions/
+
+# Framework-specific (not all may apply; safe to ignore if unused)
+.next/
+.nuxt/
+.vercel/
+.netlify/
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# --- Misc ---
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

@@ -1,0 +1,34 @@
+Dashboard Endpoints
+
+endpoint for dashboard analytics
+http://127.0.0.1:8000/api/dashboard/analytics/overview
+
+Response
+{
+    "data": {
+        "attendance": {
+            "today_present": 0,
+            "today_late": 1,
+            "today_absent": 0,
+            "weekly_average": 0,
+            "monthly_average": 0
+        },
+        "members": {
+            "total_members": 1,
+            "active_members": 0,
+            "new_this_month": 1,
+            "expiring_subscriptions": 0
+        },
+        "revenue": {
+            "this_month": 0,
+            "last_month": 0,
+            "growth_percentage": 0,
+            "pending_payments": 0
+        },
+        "trainers": {
+            "total_trainers": 0,
+            "active_trainers": 0,
+            "total_clients": 0
+        }
+    }
+}
