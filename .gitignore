@@ -95,6 +95,9 @@ coverage/
 *.seed
 *.pid.lock
 
+# SpecStory AI chat history (local tooling, not project source)
+.specstory/
+
 # Logs
 logs/
 *.log
