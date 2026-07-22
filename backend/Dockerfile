@@ -20,4 +20,4 @@ EXPOSE 8000
 
 # On boot: apply migrations, collect static, ensure a demo superuser exists, then serve.
 # createsuperuser --noinput is a no-op (non-zero) if the user already exists, hence `|| true`.
-CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && (python manage.py createsuperuser --noinput || true) && gunicorn gym_backend.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && (python manage.py createsuperuser --noinput || true) && (python manage.py seed_history || true) && gunicorn gym_backend.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120"]
