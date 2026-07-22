@@ -1,0 +1,34 @@
+# Render Blueprint for the FitSync Django backend.
+# In Render: New > Blueprint > pick this repo. Then fill the `sync: false`
+# secrets (DATABASE_URL, DJANGO_SUPERUSER_PASSWORD) in the dashboard.
+services:
+  - type: web
+    name: fitsync-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /admin/login/
+    envVars:
+      - key: DEBUG
+        value: "False"
+      # Django secret key — Render generates a strong value automatically.
+      - key: SECRET_KEY
+        generateValue: true
+      # Allow the SPA (any origin) to call the API. Fine for a public demo.
+      - key: CORS_ALLOW_ALL_ORIGINS
+        value: "True"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      # Neon Postgres connection string — paste in the dashboard (kept secret).
+      - key: DATABASE_URL
+        sync: false
+      # Demo superuser, auto-created on first boot for the frontend login.
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: user
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: admin@fitsync.demo
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false

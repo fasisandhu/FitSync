@@ -1,0 +1,29 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.pytest_cache/
+
+# Local env / secrets (config comes from platform env vars)
+.env
+.env.*
+!.env.example
+
+# Local databases
+*.sqlite3
+**/db.sqlite3
+
+# Dev-only helper scripts and notes (not needed in the image)
+clear_migrations_db.py
+drop_schema.py
+misc/
+
+# Docs / VCS
+README.md
+.git/
