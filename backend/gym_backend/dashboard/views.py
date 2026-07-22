@@ -120,7 +120,7 @@ def dashboard_overview(request):
         try:
             this_month_revenue = Payment.objects.filter(
                 payment_date__gte=current_month_start,
-                status='completed'
+                status='paid'
             ).aggregate(
                 total=Sum('amount')
             )['total'] or 0
@@ -128,7 +128,7 @@ def dashboard_overview(request):
             last_month_revenue = Payment.objects.filter(
                 payment_date__gte=last_month_start,
                 payment_date__lte=last_month_end,
-                status='completed'
+                status='paid'
             ).aggregate(
                 total=Sum('amount')
             )['total'] or 0
@@ -245,7 +245,7 @@ def dashboard_charts(request):
                 revenue = Payment.objects.filter(
                     payment_date__gte=month_start,
                     payment_date__lt=next_month,
-                    status='completed'
+                    status='paid'
                 ).aggregate(total=Sum('amount'))['total'] or 0
             except:
                 revenue = Payment.objects.filter(
